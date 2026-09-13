@@ -57,7 +57,7 @@ export default function Footer() {
 
             <div style={{ marginBottom: "24px" }}>
               <span className="contact-text">
-                <a href="mailto:aecmovers21@gmail.com">aecmovers21@gmail.com</a>
+                <a href="mailto:info@aecmovers.com">info@aecmovers.com</a>
               </span>
             </div>
 
