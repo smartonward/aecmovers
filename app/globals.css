@@ -2188,18 +2188,19 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-  /* Timeline keeps desktop zig-zag layout */
   .timeline-card {
-    padding: 16px;
+    width: 100%;
+    padding: 28px;
   }
   
   .timeline-card h2 {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 22px;
+    margin-bottom: 12px;
   }
   
+  .timeline-card p,
   .timeline-card-desc-inner p {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
