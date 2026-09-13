@@ -52,7 +52,8 @@ export default function QuoteModal() {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to submit request.");
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to submit request.");
       }
 
       setSuccess(true);

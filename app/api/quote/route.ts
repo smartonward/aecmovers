@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: Request) {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      throw new Error("Server configuration error: Database keys are missing.");
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
     const body = await request.json();
     const { firstName, lastName, email, phone, state, additionalInfo } = body;
 
@@ -38,7 +47,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.error('Error saving quote:', error);
     return NextResponse.json(
-      { error: 'Failed to process request.' },
+      { error: error.message || 'Failed to process request.' },
       { status: 500 }
     );
   }
