@@ -22,13 +22,6 @@
 
 html {
   scroll-behavior: smooth;
-  min-width: 1200px;
-}
-
-@media screen and (max-width: 1200px) {
-  html {
-    zoom: calc(100vw / 12);
-  }
 }
 
 body {
@@ -37,7 +30,6 @@ body {
   background: var(--white);
   line-height: 1.55;
   overflow-x: hidden;
-  min-width: 1200px;
 }
 
 a {
@@ -792,9 +784,8 @@ h1 em {
   background: var(--white);
   border-radius: 18px;
   box-shadow: var(--shadow);
-  display: flex;
-  overflow-x: auto;
-  scrollbar-width: none;
+  display: block;
+  overflow: hidden;
   padding: 6px;
   border: 1px solid var(--line);
 }
@@ -802,12 +793,23 @@ h1 em {
   display: none;
 }
 
+.stats-marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: scrollStats 20s linear infinite;
+}
+
+@keyframes scrollStats {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .stat {
   padding: 18px 22px;
   border-right: 1px solid var(--line);
   transition: background 0.2s ease;
-  flex: 1;
-  min-width: max-content;
+  min-width: 260px;
+  flex-shrink: 0;
 }
 
 .stat:hover {
@@ -2458,5 +2460,155 @@ footer a:hover {
     text-align: center;
     padding: 40px 24px;
     gap: 24px;
+  }
+}
+
+/* ================= Mobile Responsiveness Base Layouts ================= */
+.mobile-only {
+  display: none !important;
+}
+
+@media screen and (max-width: 992px) {
+  .navlinks, .navcta {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+    gap: 40px;
+  }
+  
+  .india-map-card {
+    justify-self: center;
+    max-width: 480px;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+
+  h1 { font-size: clamp(32px, 8vw, 42px); }
+  h2 { font-size: clamp(28px, 6vw, 36px); }
+  .section-title { font-size: clamp(28px, 6vw, 36px); }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .forces-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .zigzag-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .orbit, .route {
+    display: none; /* Hide decorative SVG lines on mobile to prevent overflow */
+  }
+  
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Animated Timeline overrides for mobile */
+  .timeline-wrapper {
+    position: relative;
+  }
+
+  .timeline-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+  }
+
+  /* Remove the full vertical grid line */
+  .timeline-grid::before {
+    display: none;
+  }
+
+  .timeline-row {
+    width: 90%;
+    justify-content: center !important;
+    position: relative;
+    z-index: 1;
+    padding: 0; /* Remove 40px desktop padding so line reaches cards */
+    min-height: auto;
+  }
+  
+  /* The dot on each card (positioned in the gap above the card) */
+  .timeline-row::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px; /* dot is 10px tall, so its center is at -15px (exactly middle of 30px gap) */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cyan);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 10px rgba(79, 184, 214, 0.5);
+    z-index: 3;
+  }
+
+  /* Hide the dot on the first card */
+  .timeline-row:first-child::before {
+    display: none;
+  }
+  
+  /* The connecting line segment that fills the 30px gap between cards */
+  .timeline-row::after {
+    content: '';
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    bottom: 100%; /* start exactly at the top of the card */
+    height: 30px; /* stretch exactly across the 30px gap to the previous card */
+    width: 2px;
+    background: rgba(79, 184, 214, 0.4);
+    z-index: 0;
+  }
+
+  /* Hide the line segment above the very first card */
+  .timeline-row:first-child::after {
+    display: none;
+  }
+  
+  .zigzag-line-svg {
+    display: none !important;
   }
 }

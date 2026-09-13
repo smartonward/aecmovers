@@ -10,12 +10,15 @@ export default function Stats() {
   return (
     <div className="stats container reveal">
       <div className="stats-grid">
-        {statsData.map((item, index) => (
-          <div className="stat" key={index}>
-            <b>{item.title}</b>
-            <span>{item.subtitle}</span>
-          </div>
-        ))}
+        <div className="stats-marquee-inner">
+          {/* Render the array twice to create a seamless infinite scrolling effect */}
+          {[...statsData, ...statsData].map((item, index) => (
+            <div className="stat" key={index}>
+              <b>{item.title}</b>
+              <span>{item.subtitle}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
