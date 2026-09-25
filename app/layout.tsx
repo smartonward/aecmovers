@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assam-express-logo-new.png" />
       </head>
       <body>
         {children}
