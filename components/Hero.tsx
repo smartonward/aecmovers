@@ -47,9 +47,9 @@ export default function Hero() {
       <div className="container hero-content">
         <div>
           <h1>
-            Direct Cargo Movement.
+            Direct Cargo Movement
             <br />
-            <em>Assam ⇄ Pune Express.</em>
+            <em>Assam ⇄ Pune Express</em>
           </h1>
           <p className="hero-copy">
             Dedicated direct linehaul transportation between Assam (Guwahati) and Pune (Maharashtra).
@@ -62,8 +62,8 @@ export default function Hero() {
           </div>
 
           <div className="actions">
-            <button 
-              className="btn btn-primary" 
+            <button
+              className="btn btn-primary"
               onClick={() => window.dispatchEvent(new Event("openQuoteModal"))}
             >
               Book Assam ⇄ Pune Cargo <span>↗</span>

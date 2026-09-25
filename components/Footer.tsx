@@ -37,17 +37,17 @@ export default function Footer() {
 
           <div className="contact-column">
             <h4 className="contact-heading">CONTACT</h4>
-            
+
             <div style={{ marginBottom: "24px" }}>
-              <span className="contact-label">Samser Alam</span>
+              <span className="contact-label"></span>
               <span className="contact-text">
                 <a href="tel:+919006097444">+91 90060 97444</a>
                 <a href="tel:+918969641695">+91 89696 41695</a>
               </span>
             </div>
-            
+
             <div style={{ marginBottom: "24px" }}>
-              <span className="contact-label">Pune Hub</span>
+              <span className="contact-label"></span>
               <address className="contact-text">
                 Vaishnavi PG, Marunji Road, Phase 1,<br />
                 Hinjawadi Rajiv Gandhi Infotech Park,<br />
@@ -60,13 +60,6 @@ export default function Footer() {
                 <a href="mailto:info@aecmovers.com">info@aecmovers.com</a>
               </span>
             </div>
-
-            <button 
-              className="contact-cta"
-              onClick={() => window.dispatchEvent(new Event("openQuoteModal"))}
-            >
-              Request a quote <span>→</span>
-            </button>
           </div>
         </div>
 
